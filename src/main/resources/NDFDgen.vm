@@ -1,0 +1,12 @@
+<NDFDgen xmlns="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl">
+	<latitude>${body.location.latitude}</latitude>
+	<longitude>${body.location.longitude}</longitude>
+	<product>time-series</product>
+<!--	<product>glance</product>-->
+	<startTime>$body.startTime</startTime>
+	<endTime>$body.endTime</endTime>
+	<weatherParameters>
+		<maxt>true</maxt>
+		<mint>true</mint>
+	</weatherParameters>
+</NDFDgen>

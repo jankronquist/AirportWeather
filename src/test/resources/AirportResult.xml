@@ -1,0 +1,38 @@
+<NewDataSet>
+	<Table>
+		<AirportCode>EWR</AirportCode>
+		<CityOrAirportName>NEW YORK NY/NEWARK NEWARK INL</CityOrAirportName>
+		<Country>United States</Country>
+		<CountryAbbrviation>US</CountryAbbrviation>
+		<CountryCode>22</CountryCode>
+		<GMTOffset>5</GMTOffset>
+		<RunwayLengthFeet>9300</RunwayLengthFeet>
+		<RunwayElevationFeet>18</RunwayElevationFeet>
+		<LatitudeDegree>40</LatitudeDegree>
+		<LatitudeMinute>41</LatitudeMinute>
+		<LatitudeSecond>0</LatitudeSecond>
+		<LatitudeNpeerS>N</LatitudeNpeerS>
+		<LongitudeDegree>74</LongitudeDegree>
+		<LongitudeMinute>10</LongitudeMinute>
+		<LongitudeSeconds>0</LongitudeSeconds>
+		<LongitudeEperW>W</LongitudeEperW>
+	</Table>
+	<Table>
+		<AirportCode>EWR</AirportCode>
+		<CityOrAirportName>NEW YORK NY/NEWARK NEWARK INL</CityOrAirportName>
+		<Country>United States</Country>
+		<CountryAbbrviation>US</CountryAbbrviation>
+		<CountryCode>22</CountryCode>
+		<GMTOffset>5</GMTOffset>
+		<RunwayLengthFeet>9300</RunwayLengthFeet>
+		<RunwayElevationFeet>18</RunwayElevationFeet>
+		<LatitudeDegree>40</LatitudeDegree>
+		<LatitudeMinute>41</LatitudeMinute>
+		<LatitudeSecond>0</LatitudeSecond>
+		<LatitudeNpeerS>N</LatitudeNpeerS>
+		<LongitudeDegree>74</LongitudeDegree>
+		<LongitudeMinute>10</LongitudeMinute>
+		<LongitudeSeconds>0</LongitudeSeconds>
+		<LongitudeEperW>W</LongitudeEperW>
+	</Table>
+</NewDataSet>

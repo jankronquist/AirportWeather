@@ -1,0 +1,10 @@
+<NDFDgen xmlns="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl">
+	<latitude>39.0000</latitude>
+	<longitude>-77.0000</longitude>
+	<product>time-series</product>
+	<startTime>2011-07-12T12:00</startTime>
+	<endTime>2011-07-13T12:00</endTime>
+	<weatherParameters>
+		<maxt>true</maxt>
+	</weatherParameters>
+</NDFDgen>
