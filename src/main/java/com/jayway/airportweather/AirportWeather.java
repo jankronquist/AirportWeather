@@ -47,10 +47,11 @@ public class AirportWeather {
 
 	public static CamelContext makeCamelContext() throws Exception {
 		SimpleRegistry registry = new SimpleRegistry();
-		CamelContext context = new DefaultCamelContext(registry);
-		
 		registry.put("cdataTransformer", new CDataTransformer());
 		registry.put("temperatureTransformer", new TemperatureTransformer());
+
+		CamelContext context = new DefaultCamelContext(registry);
+		
 		return context;
 	}
 

@@ -75,19 +75,6 @@ public class AirportWeatherTest {
 		expectRollback("No temperature found");
 	}
 
-	@Test
-	public void testStuff() throws Exception {
-		context.getRouteDefinitions().get(0).adviceWith(context, new AdviceWithRouteBuilder() {
-		    @Override
-		    public void configure() throws Exception {
-		    		interceptSendToEndpoint(AirportWeather.INVOKE_NDFD_GEN).skipSendToOriginalEndpoint().to("log:velocityel.example?level=ERROR");
-		    }
-		});
-		context.start();
-		ProducerTemplate template = context.createProducerTemplate();
-		template.requestBody(AirportWeather.FROM_LOCATION_TO_NDFD, new Location(1, 1));
-	}
-
 	private void expectRollback(String message) {
 		ProducerTemplate template = context.createProducerTemplate();
 		String body = "EWR";
