@@ -19,11 +19,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.apache.camel.Converter;
-import org.apache.camel.Exchange;
 import org.apache.camel.FallbackConverter;
 import org.apache.camel.spi.TypeConverterRegistry;
-
-import com.jayway.lang.Sneak;
 
 /**
  * Convert to a type if there is a public no-argument method in the value that returns exactly this type.
@@ -32,13 +29,13 @@ import com.jayway.lang.Sneak;
 public class UsingMethod {
 	@SuppressWarnings("unchecked")
 	@FallbackConverter
-    public static <T> T convertTo(Class<T> type, Exchange exchange, Object value, TypeConverterRegistry registry) {
+    public static <T> T convertTo(Class<T> type, Object value, TypeConverterRegistry registry) throws Throwable {
 		for (Method m : value.getClass().getMethods()) {
 			if (m.getParameterTypes().length == 0 && type.equals(m.getReturnType())) {
 				try {
 					return (T) m.invoke(value);
 				} catch (InvocationTargetException e) {
-					throw Sneak.sneakyThrow(e);
+				    throw e;
 				} catch (Exception e) {
 					throw new RuntimeException("Failed to instantiate "+ type.getName(), e);
 				}

@@ -28,7 +28,7 @@ public class UsingReflectionUnitTest {
 	}
 
 	public static class LocationDummy extends Location {
-		private final int dummy;
+		public final int dummy;
 
 		public LocationDummy(AirportLocation o, int dummy) {
 			super(o);
@@ -37,24 +37,24 @@ public class UsingReflectionUnitTest {
 	}
 	
 	@Test
-	public void testUsingConstructor() {
-		checkLocation(UsingConstructor.convertTo(Location.class, null, prepare(new AirportLocationDummy()), null));
-		checkLocation(UsingConstructor.convertTo(Location.class, null, prepare(new AirportLocation()), null));
-		assertNull(UsingConstructor.convertTo(LocationDummy.class, null, prepare(new AirportLocation()), null));
-		assertNull(UsingConstructor.convertTo(Object.class, null, prepare(new AirportLocation()), null));
+	public void testUsingConstructor() throws Throwable {
+		checkLocation(UsingConstructor.convertTo(Location.class, prepare(new AirportLocationDummy()), null));
+		checkLocation(UsingConstructor.convertTo(Location.class, prepare(new AirportLocation()), null));
+		assertNull(UsingConstructor.convertTo(LocationDummy.class, prepare(new AirportLocation()), null));
+		assertNull(UsingConstructor.convertTo(Object.class, prepare(new AirportLocation()), null));
 	}
 
 	@Test
-	public void testUsingMethod() {
-		checkLocation(UsingMethod.convertTo(Location.class, null, prepare(new AirportLocationDummy()), null));
-		checkLocation(UsingMethod.convertTo(Location.class, null, prepare(new AirportLocation()), null));
-		assertNull(UsingMethod.convertTo(LocationDummy.class, null, prepare(new AirportLocation()), null));
-		assertNull(UsingMethod.convertTo(Object.class, null, prepare(new AirportLocation()), null));
+	public void testUsingMethod() throws Throwable {
+		checkLocation(UsingMethod.convertTo(Location.class, prepare(new AirportLocationDummy()), null));
+		checkLocation(UsingMethod.convertTo(Location.class, prepare(new AirportLocation()), null));
+		assertNull(UsingMethod.convertTo(LocationDummy.class, prepare(new AirportLocation()), null));
+		assertNull(UsingMethod.convertTo(Object.class, prepare(new AirportLocation()), null));
 	}
 
 	@Test
-	public void usingMethodCallsToString() {
-		assertEquals("0.0 0.0", UsingMethod.convertTo(String.class, null, new Location(0.0, 0.0), null));
+	public void usingMethodCallsToString() throws Throwable {
+		assertEquals("0.0 0.0", UsingMethod.convertTo(String.class, new Location(0.0, 0.0), null));
 	}
 
 	private AirportLocation prepare(AirportLocation value) {

@@ -19,11 +19,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import org.apache.camel.Converter;
-import org.apache.camel.Exchange;
 import org.apache.camel.FallbackConverter;
 import org.apache.camel.spi.TypeConverterRegistry;
-
-import com.jayway.lang.Sneak;
 
 
 /**
@@ -33,14 +30,14 @@ import com.jayway.lang.Sneak;
 public class UsingConstructor {
 	@SuppressWarnings("unchecked")
 	@FallbackConverter
-    public static <T> T convertTo(Class<T> type, Exchange exchange, Object value, TypeConverterRegistry registry) {
+    public static <T> T convertTo(Class<T> type, Object value, TypeConverterRegistry registry) throws Throwable {
 		for (Constructor<?> c : type.getConstructors()) {
 			if (c.getParameterTypes().length == 1) {
 				if (c.getParameterTypes()[0].isAssignableFrom(value.getClass())) {
 					try {
 						return (T) c.newInstance(value);
 					} catch (InvocationTargetException e) {
-						throw Sneak.sneakyThrow(e);
+					    throw e;
 					} catch (Exception e) {
 						throw new RuntimeException("Failed to instantiate "+ type.getName(), e);
 					}
