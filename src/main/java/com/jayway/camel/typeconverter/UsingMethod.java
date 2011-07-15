@@ -15,7 +15,6 @@
  */
 package com.jayway.camel.typeconverter;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.apache.camel.Converter;
@@ -32,13 +31,7 @@ public class UsingMethod {
     public static <T> T convertTo(Class<T> type, Object value, TypeConverterRegistry registry) throws Throwable {
 		for (Method m : value.getClass().getMethods()) {
 			if (m.getParameterTypes().length == 0 && type.equals(m.getReturnType())) {
-				try {
-					return (T) m.invoke(value);
-				} catch (InvocationTargetException e) {
-				    throw e;
-				} catch (Exception e) {
-					throw new RuntimeException("Failed to instantiate "+ type.getName(), e);
-				}
+				return (T) m.invoke(value);
 			}
 		}
 		return null;

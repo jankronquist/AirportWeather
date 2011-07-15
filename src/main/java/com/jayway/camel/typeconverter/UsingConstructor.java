@@ -16,34 +16,26 @@
 package com.jayway.camel.typeconverter;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 import org.apache.camel.Converter;
 import org.apache.camel.FallbackConverter;
 import org.apache.camel.spi.TypeConverterRegistry;
 
-
 /**
- * Convert to a type if there is a one argument constructor in that type that can take the value as argument.
+ * Convert to a type if there is a one argument constructor in that type that
+ * can take the value as argument.
  */
 @Converter
 public class UsingConstructor {
-	@SuppressWarnings("unchecked")
-	@FallbackConverter
+    @SuppressWarnings("unchecked")
+    @FallbackConverter
     public static <T> T convertTo(Class<T> type, Object value, TypeConverterRegistry registry) throws Throwable {
-		for (Constructor<?> c : type.getConstructors()) {
-			if (c.getParameterTypes().length == 1) {
-				if (c.getParameterTypes()[0].isAssignableFrom(value.getClass())) {
-					try {
-						return (T) c.newInstance(value);
-					} catch (InvocationTargetException e) {
-					    throw e;
-					} catch (Exception e) {
-						throw new RuntimeException("Failed to instantiate "+ type.getName(), e);
-					}
-				}
-			}
-		}
-		return null;
-	}
+        for (Constructor<?> c : type.getConstructors()) {
+            Class<?>[] types = c.getParameterTypes();
+            if (types.length == 1 && types[0].isAssignableFrom(value.getClass())) {
+                    return (T) c.newInstance(value);
+            }
+        }
+        return null;
+    }
 }
