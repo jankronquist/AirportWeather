@@ -23,7 +23,7 @@ import org.junit.Test;
 import com.jayway.airportweather.model.AirportLocation;
 import com.jayway.airportweather.model.Location;
 
-public class UsingReflectionTest {
+public class UsingReflectionUnitTest {
 	public static class AirportLocationDummy extends AirportLocation {
 	}
 
@@ -35,7 +35,7 @@ public class UsingReflectionTest {
 			this.dummy = dummy;
 		}
 	}
-
+	
 	@Test
 	public void testUsingConstructor() {
 		checkLocation(UsingConstructor.convertTo(Location.class, null, prepare(new AirportLocationDummy()), null));
