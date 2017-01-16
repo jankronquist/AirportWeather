@@ -5,6 +5,7 @@
 <!--	<product>glance</product>-->
 	<startTime>$body.startTime</startTime>
 	<endTime>$body.endTime</endTime>
+	<unit>e</unit>
 	<weatherParameters>
 		<maxt>true</maxt>
 		<mint>true</mint>

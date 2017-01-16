@@ -67,7 +67,7 @@ public class AirportWeather {
 						.when().xpath("count(/NewDataSet/Table)=0").rollback("No Airport found")
 						.otherwise();
 				from(INVOKE_NDFD_GEN)
-					.to("spring-ws:http://www.weather.gov/forecasts/xml/SOAP_server/ndfdXMLserver.php?soapAction=http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgen")
+					.to("spring-ws:http://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php?soapAction=http://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgen")
 					.transform().xpath("/ns1:NDFDgenResponse/dwmlOut/text()", new Namespaces("ns1", "http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl"))
 					.transform().method("cdataTransformer");
 				from(FROM_AIRPORT_INFORMATION_TO_LOCATION)
